@@ -18,4 +18,10 @@ To run the server
 python manage.py runserver
 ```
 
+TO migrate
+```py
+python manage.py migrate
+
+```
+
 
