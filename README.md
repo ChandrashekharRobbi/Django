@@ -18,9 +18,15 @@ To run the server
 python manage.py runserver
 ```
 
-TO migrate
+Migrations
 ```py
+# it is similar like ge4t ready with set of statements to change the models
+python manage.py makemigrations
+# it is similar to execute all the commands 
 python manage.py migrate
+# it is similar to viewing all changes made
+python manage.py showmigrations
+
 
 ```
 
