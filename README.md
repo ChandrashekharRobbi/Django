@@ -43,4 +43,10 @@ python manage.py migrate lemmonslame 0002
 python manage.py sqlmigrate lemmonslame 0001 # it will show all sql code for 0001 file
 ```
 
+# Admin access
+
+```py
+python manage.py createsuperuser
+```
+
 
