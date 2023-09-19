@@ -31,3 +31,16 @@ python manage.py showmigrations
 ```
 
 
+
+Traverse Back to Previous Model
+```py
+# it will tell what all things will undo 
+python manage.py migrate lemmonslame 0002 --plan
+# it will go back to the stage of 0002
+python manage.py migrate lemmonslame 0002
+
+# if we want to see SQL statement where Django performs by using OOPS
+python manage.py sqlmigrate lemmonslame 0001 # it will show all sql code for 0001 file
+```
+
+
