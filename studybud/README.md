@@ -7,4 +7,4 @@ A tutorial by using Django to learn more about Django and its functionality
 
     so add them in settings > `INSTALLED APPS` 
 
-    the sturcture should be like app_name.apps.app_namconfig
+    the sturcture should be like app_name.apps.app_nameconfig
