@@ -1,0 +1,13 @@
+
+{% extends 'main.html' %}
+    {% block information %}
+        <h1>{{room.name}}</h1>
+        <p>Id no {{room.id}}</p>
+        <p>Name {{room.name}}</p>
+            {% if room.description %}
+                <p>Description: {{room.description}}</p>
+            {% else %}
+                <p> Please add Description for {{room.name}}</p>
+            {% endif %}
+
+    {% endblock %}

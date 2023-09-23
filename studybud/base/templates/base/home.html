@@ -1,0 +1,63 @@
+
+{% extends 'main.html' %}
+
+{% block information %}
+<style>
+    .home-container{
+        display: grid;
+        grid-template-columns: 1fr 3fr;
+    }
+</style>
+
+    
+<div class="home-container">
+
+    <div>
+        <h3>Browse Topics</h3>
+        <hr>
+
+        <div>
+            <a href="{% url 'home' %}">All</a>
+        </div>
+
+        {% for topic in topics %}
+        <div>
+            <a href="{% url 'home' %}?q={{topic.name}}">{{topic.name}}</a>
+        </div>
+            
+        {% endfor %}
+    </div>
+
+
+    <div>
+        <h3>{{room_count}} Rooms are available</h3>
+        <a href="{% url 'room_form'  %}">Create Form</a>
+        <p></p>
+
+        <div>
+
+            {% for item in val %}
+
+                <div>
+                    <!-- url format will be 'attribute name of the view' value to be access -->
+                    <a href="{% url 'update_form' item.id %}">Edit</a>
+                    <a href="{% url 'delete_form' item.id %}">Delete</a>
+                    <span>@ {{item.host.username}}</span>
+                    <p><a href="{% url 'room' item.id %}">{{item.name}}</a></p>
+                    <p>{{item.description}}</p>
+                    <hr>
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+
+
+    </div>
+
+
+    
+</div>
+
+{% endblock %}
