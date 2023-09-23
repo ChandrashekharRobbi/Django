@@ -1,7 +1,7 @@
 # Django 🚀
 
 Django follows MVT architecture
-![MVT](image-4.png)
+![MVT](img/image-4.png)
 ### Starting Off
 
 1. **Creating a New Project 🏗️**
