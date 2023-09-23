@@ -40,8 +40,10 @@
 
                 <div>
                     <!-- url format will be 'attribute name of the view' value to be access -->
+                    {% if request.user == item.host %}
                     <a href="{% url 'update_form' item.id %}">Edit</a>
                     <a href="{% url 'delete_form' item.id %}">Delete</a>
+                    {% endif %}
                     <span>@ {{item.host.username}}</span>
                     <p><a href="{% url 'room' item.id %}">{{item.name}}</a></p>
                     <p>{{item.description}}</p>
