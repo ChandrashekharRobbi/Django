@@ -27,7 +27,7 @@
             <hr>
             {% for roommessage in roommessages %}
             {% if request.user == roommessage.user %}
-                <a href="">Edit</a>
+                <a href="{% url 'update_message' roommessage.id %}">Edit</a>
                 <a href="{% url 'delete_message' roommessage.id %}">Delete</a>
             {% endif %}
             <small>@{{roommessage.user}} - {{roommessage.created|timesince}} ago</small>
