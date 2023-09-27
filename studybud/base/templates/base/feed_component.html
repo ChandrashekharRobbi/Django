@@ -8,7 +8,7 @@
             <a href="{% url 'update_form' item.id %}">Edit</a>
             <a href="{% url 'delete_form' item.id %}">Delete</a>
             {% endif %}
-            <span>@ {{item.host.username}}</span>
+            <a href="{% url 'user_profile' item.host.id %}">@ {{item.host.username}}</a>
             <p><a href="{% url 'room' item.id %}">{{item.name}}</a></p>
             <p>{{item.description}}</p>
             <hr>
