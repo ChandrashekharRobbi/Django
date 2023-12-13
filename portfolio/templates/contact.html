@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% block title %}Contact{% endblock %}
+{% block contactactive %}active{% endblock %}
+{% block content %}
+  
+<div class="container mt-50">
+  <h1 class="text-center">Contact me</h1>
+  <form action="contact" method="POST">
+    {% csrf_token %}
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="name" class="form-control" id="name" name="name" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label">Phone No</label>
+      <input type="phone" class="form-control" id="phone" name="phone" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" name="email" aria-describedby="emailHelp">
+    </div>
+    <div class="mb-3">
+      <label for="desc" class="form-label">Desc</label>
+      <input type="text" class="form-control" id="desc" name="desc">
+    </div>
+    <!-- <input type="text" name="desc" id="desc">Desc -->
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  {% if Submit %}
+  {{ text }}
+  {% endif %}
+</div>
+{% endblock %}
