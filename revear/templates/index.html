@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Revear</title>
+        <link rel="stylesheet" href="{% static 'styles.css' %}">
+        <script src="{% static 'main.js' %}"></script>
+    </head>
+    <body>
+        <h1>Revear</h1>
+        <h1>Add new Task</h1>
+        <form action="submitParser/" method='POST'>
+        {% csrf_token %}
+        <input type="text" name="text">
+        <input type="submit" value="Submit">
+    </form>
+    <hr>
+    <h4><a href="all/">View all task</a></h4>
+    <h2>Today's Task - {{curr_date}}</h2>
+    <table>
+        {% if submit %}
+        <tr>
+            <th>Check Box</th>
+            <th>Name</th>
+            <th>Created At</th>
+            <th>Date Between</th>
+        </tr>
+        {% for each in value %}
+        <tr id="row-{{forloop.counter}}">
+            {% with is_valid_day=each.datebetween.days %}
+            {% if is_valid_day == 1 or is_valid_day == 3 or is_valid_day > 1 and is_valid_day|divisibleby:7 == True %}
+            <td><input type="checkbox" name="checked" id="checked-{{forloop.counter}}"></td>
+            <td>{{each.name}}</td>
+            <td>{{each.created_at.date}}</td>
+            <td>{{each.datebetween.days}}</td>
+            {% endif %}
+            {% endwith %}
+        </tr>
+        {% endfor %}
+        {% else %}
+        <td>No data To Display</td>
+        {% endif %}
+        
+    </table>
+</body>
+</html>

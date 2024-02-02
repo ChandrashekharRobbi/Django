@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Details</title>
+</head>
+<body>
+    <a href="/">Home</a>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Created At</th>
+            <th>Date Between </th>
+        </tr>
+        {% for each in value %}
+        <tr>
+            <td>{{each.id}}</td>
+            <td>{{each.name}}</td>
+            <td>{{each.created_at.date}}</td>
+            <td>{{each.datebetween.days}}</td>
+        </tr>
+        {% comment %} <p>{{each}}</p> {% endcomment %}
+        {% endfor %}
+    </table>
+</body>
+</html>
