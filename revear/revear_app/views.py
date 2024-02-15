@@ -31,3 +31,6 @@ def submit(request):
         rowInstance = models.TaskData(name=name)
         rowInstance.save()
     return render(request, 'submit.html')
+
+def Bt(request):
+    return render(request, 'base.html')

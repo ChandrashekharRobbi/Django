@@ -1,48 +1,72 @@
-<!DOCTYPE html>
+{% extends "base.html" %}
 {% load static %}
-<html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Revear</title>
-        <link rel="stylesheet" href="{% static 'styles.css' %}">
-        <script src="{% static 'main.js' %}"></script>
-    </head>
-    <body>
-        <h1>Revear</h1>
-        <h1>Add new Task</h1>
-        <form action="submitParser/" method='POST'>
-        {% csrf_token %}
-        <input type="text" name="text">
-        <input type="submit" value="Submit">
-    </form>
-    <hr>
-    <h4><a href="all/">View all task</a></h4>
-    <h2>Today's Task - {{curr_date}}</h2>
-    <table>
-        {% if submit %}
-        <tr>
-            <th>Check Box</th>
-            <th>Name</th>
-            <th>Created At</th>
-            <th>Date Between</th>
-        </tr>
-        {% for each in value %}
-        <tr id="row-{{forloop.counter}}">
-            {% with is_valid_day=each.datebetween.days %}
-            {% if is_valid_day == 1 or is_valid_day == 3 or is_valid_day > 1 and is_valid_day|divisibleby:7 == True %}
-            <td><input type="checkbox" name="checked" id="checked-{{forloop.counter}}"></td>
-            <td>{{each.name}}</td>
-            <td>{{each.created_at.date}}</td>
-            <td>{{each.datebetween.days}}</td>
-            {% endif %}
-            {% endwith %}
-        </tr>
-        {% endfor %}
-        {% else %}
-        <td>No data To Display</td>
-        {% endif %}
-        
-    </table>
-</body>
-</html>
+        <title>{% block title %}Revear{% endblock title %}  </title>
+{% block style_file %}
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+{% endblock style_file %}
+{% block main_js %}
+
+<script src="{% static 'main.js' %}"></script>
+{% endblock main_js %}
+        {% block home_active %}active{% endblock home_active %}
+        {% block content %}
+        <div class="px-5 text-center">
+            
+            {% comment %} <h1>Revear</h1> {% endcomment %}
+            <span id='element' class="fs-2 text-primary"></span>
+            <h1>Add new Task</h1>
+            <form action="submitParser/" method="POST">
+                {% csrf_token %}
+                <input type="text" name="text">
+                <input type="submit" value="Submit">
+            </form>
+            <hr>
+            {% comment %} <h4><a href="all/">View all task</a></h4> {% endcomment %}
+            <h2>Today's Task - {{curr_date}}</h2>
+            <table>
+                {% if submit %}
+                <tr>
+                    <th>Check Box</th>
+                    <th>Name</th>
+                    <th>Created At</th>
+                    <th>Date Between</th>
+                </tr>
+                {% for each in value %}
+                <tr id="row-{{forloop.counter}}">
+                    {% with is_valid_day=each.datebetween.days %}
+                    {% if is_valid_day == 1 or is_valid_day == 3 or is_valid_day > 1 and is_valid_day|divisibleby:7 == True %}
+                    <td><input type="checkbox" name="checked" id="checked-{{forloop.counter}}"></td>
+                    <td>{{each.name}}</td>
+                    <td>{{each.created_at.date}}</td>
+                    <td>{{each.datebetween.days}}</td>
+                    {% endif %}
+                    {% endwith %}
+                </tr>
+                {% endfor %}
+                {% else %}
+                <td class="text-center"> No data To Display</td>
+                {% endif %}
+                
+            </table>
+              <!-- Element to contain animated typing -->
+
+            <!-- Load library from the CDN -->
+            <script src="https://unpkg.com/typed.js@2.1.0/dist/typed.umd.js"></script>
+
+            <!-- Setup and start animation! -->
+            <script>
+                var typed = new Typed('#element', {
+                strings: ['Are you forgetting what you learned just a few days ago?', 
+                'What could be the possible reason for this?',
+                'Is frequent revision necessary?',
+                'How often should you revise?',
+                'Give Revear a try.',
+                'It utilizes a scientific revision technique.',
+                'Try Revear to avoid forgetting with its scientifically proven revision technique.'],
+                typeSpeed: 50,
+                });
+            </script>
+            </body>
+            {% endblock content %}
+        </div>
+        </body>
