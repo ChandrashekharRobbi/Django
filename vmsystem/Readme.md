@@ -1,6 +1,12 @@
 
 # Vendor Management System with Performance Metrics
 
+## Output:
+
+
+https://github.com/ChandrashekharRobbi/Django/assets/91750738/7e5a0466-82fe-4989-9b53-209acc2356af
+
+
 ## Introduction
 
 This Vendor Management System (VMS) is a Django-based web application designed to handle vendor profiles, track purchase orders, and calculate vendor performance metrics. The system provides APIs for managing vendors, purchase orders, and retrieving performance metrics.
