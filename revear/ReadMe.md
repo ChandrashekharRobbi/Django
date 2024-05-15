@@ -1,4 +1,4 @@
-# Revear
+# Revear ~ Memo More
 
 🔄 Revear - Revise and Repeat 🔄
 
